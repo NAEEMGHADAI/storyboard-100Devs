@@ -21,6 +21,7 @@
 	</head>
 	<body>
 		{{> _header}}
+		{{> _add_btn}}
 		{{! using 3 brackets because we want to parse html, if it was js than 2 would be ok }}
 		{{! double handlebars- {} prevents html injection }}
 		<div class="container">
@@ -31,7 +32,15 @@
 		<script
 			src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
 		></script>
-		{{!-- initializing sidebar to make it work  --}}
-		<script>M.Sidenav.init(document.querySelector(".sidenav"))</script>
+		{{!-- ckeditor cdn --}}
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.20.0/ckeditor.js" integrity="sha512-BcYkQlDTKkWL0Unn6RhsIyd2TMm3CcaPf0Aw1vsV28Dj4tpodobCPiriytfnnndBmiqnbpi2EelwYHHATr04Kg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		{{! initializing sidebar to make it work  }}
+		<script>
+			M.Sidenav.init(document.querySelector(".sidenav"))
+			M.FormSelect.init(document.querySelector("#status"))
+			CKEDITOR.replace("body", {
+				plugins: "wysiwygarea, toolbar, basicstyles, link"
+			})
+		</script>
 	</body>
 </html>
